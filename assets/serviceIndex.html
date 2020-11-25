@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>pathfinder-api</title>
+  </head>
+  <body>
+    <div id="root">
+        Hello, friend.<br/>
+        <ul>
+          <li>To check if the API is running goto url :</li>
+          <a href="http://127.0.0.1:3000/api/version">http://127.0.0.1:3000/api/version</a>
+        </ul>
+        <ul>
+          <li>To know the vertex's min or max id using the service goto the url :</li>
+          <a href="http://127.0.0.1:3000/api/graph/info">http://127.0.0.1:3000/api/graph/info</a>
+        </ul>
+        <ul>
+          <li>You can find the 'fastest' path from vertex's id: 0 to vertex's id: 4 by using this url :</li>
+          <a href="http://127.0.0.1:3000/api/graph/findPath?from=0&to=4&by=fast">http://127.0.0.1:3000/api/graph/findPath?from=0&to=4&by=fast</a>
+        </ul>
+        <ul>
+          <li>To find the 'eco' path from vertex's id: 4 to vertex's id: 2 by using this url :</li>
+          <a href="http://127.0.0.1:3000/api/graph/findPath?from=4&to=2&by=eco">http://127.0.0.1:3000/api/graph/findPath?from=4&to=2&by=eco</a>
+        </ul>
+        <br/>
+        The "by" parameter can be equal to <b>fast</b> or <b>eco</b>.
+        <br/>
+    </div>
+  </body>
+</html>
