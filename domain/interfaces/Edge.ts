@@ -3,7 +3,7 @@
  */
 export interface Edge
 {
-    distance_km: number;
-    co2_g: number;
-    vertex_id: number;
+    readonly distance_km: number;
+    readonly co2_g: number;
+    readonly vertex_id: number;
 }
