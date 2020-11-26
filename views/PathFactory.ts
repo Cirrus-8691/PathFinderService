@@ -14,12 +14,11 @@ export default class PathFactory {
      */
     public static Build(params : FindPathParameters, vertices:number[], totalWeight:number) : Path
     {
-        const fromVertexId : number = +params.from; // + used to cast "from" string to number
         const path : Path =  {
-            fromVertexId,
+            fromVertexId : params.from,
             toVertexId : vertices[0],
             metricUsed : params.by,
-            verticesFromTo : [fromVertexId],
+            verticesFromTo : [params.from],
             totalWeight,
         };
         path.verticesFromTo = path.verticesFromTo.concat( vertices.reverse() );

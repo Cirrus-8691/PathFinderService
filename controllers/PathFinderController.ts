@@ -42,6 +42,9 @@ export default class PathFinderController {
             request.log.info("SW - api/findpath");
 
             const params = request.query as FindPathParameters;
+            params.from  = +params.from; // cast "from" string to number
+            params.to    = +params.to;   // cast "to"   string to number
+    
             request.log.info(`SW - findPath from vertex id:${params.from} to vertex id:${params.to} by ${params.by}`);
 
             return PathFactory.Build( 

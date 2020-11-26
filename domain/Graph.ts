@@ -53,8 +53,6 @@ export default class Graph {
         if(!param) {
             throw new Error("param is not defined");
         }
-        param.from = +param.from; // cast "from" string to number
-        param.to = +param.to; // cast "from" string to number
         if(param.from < this.graphInfo.minVertexId) {
             throw new Error(`from < minVertexId:${this.graphInfo.minVertexId}`);
         }
