@@ -54,7 +54,8 @@ npm test
 ##  Continuous integration
 The Github repository has two workflows in "Actions" defined in the 
 <a href="./.github/workflows">Yaml files in ./github/workflows/</a><br/>
-The <a href="./.github/workflows/manual.yml">Manual workflow</a> can be used to run (click on "Run Workflow" button) the unit tests in the Github pipeline.<br/>
+The <a href="./.github/workflows/manual.yml">Manual workflow</a> can be used to run (click on "Run Workflow" button) the unit tests in the Github pipeline. NB : Refresh the HTML page if nothing moves.
+<br/>
 The other workflow <a href="./.github/workflows/node.js.yml">Node.js CI</a> is used for continuous integration.
 <p align="center">
     <img
