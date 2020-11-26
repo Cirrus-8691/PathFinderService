@@ -46,7 +46,7 @@ export default class Graph {
         return this.graphInfo;
     }
     /**
-     *  Get a vertex from his id
+     *  Get a vertex from its id
      * Warning idVertex is not checked
      * @param vertexId
      */
