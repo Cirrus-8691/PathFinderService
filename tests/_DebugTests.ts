@@ -1,6 +1,6 @@
 import { testGraphExists, testGetVertex } from "./BasicGraphTests";
-import { testFindPathParameters, viewPathFastPathBetween,
-     findFastPathBetweenVertices, viewPathEcoPathBetween } from "./FindPathTests";
+import { testFindPathParameters, findFastPathBetweenVertices } from "./FindPathTests";
+import { viewPathFastPathBetween } from "./IntegrationsTests";
 /**
  * Debug test with Visual code
  */
@@ -10,5 +10,5 @@ testGetVertex();
 testFindPathParameters();
 findFastPathBetweenVertices();
 viewPathFastPathBetween();
-viewPathEcoPathBetween();
+viewPathFastPathBetween();
 // TODO : other tests...

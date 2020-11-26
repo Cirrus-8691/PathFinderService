@@ -1,6 +1,6 @@
 import {FastifyInstance, FastifyReply, FastifyRequest} from "fastify";
 import { Health } from "../views/interfaces/Health";
-import fs from 'fs';
+import fs from "fs";
 
 export default class MainController {
 
