@@ -4,7 +4,7 @@
  */
 import { assert } from "chai";
 import { FindPathParameters } from "../controllers/requestParameters/FindPathParameters";
-import Graph, { ByEcoPath, ByFastestPath } from "../domain/Graph";
+import Graph, { ByEcoPath, ByFastestPath, ShorterPath } from "../domain/Graph";
 import { Path } from "../views/interfaces/Path";
 import PathFactory from "../views/PathFactory";
 
@@ -47,37 +47,37 @@ export const testFindPathParameters = () => {
  */
 export const findFastPathBetweenVertices = () => {
    const graph = new Graph();
-   const path42 : number[] = graph.find( {
+   const path42 : ShorterPath = graph.find( {
             from : 4,
             to : 2,
             by : ByFastestPath
          });
    assert.isDefined(path42,"path is undefined");
-   assert.isTrue(path42.length>0, "bad path42");
-   assert.isDefined(path42.find(v => v===1), "bad path42");
+   assert.isTrue(path42[0].length>0, "bad path42");
+   assert.isDefined(path42[0].find(v => v===1), "bad path42");
 
    const path02 = graph.find( { from : 0, to : 2, by : ByFastestPath });
-   assert.isTrue(path02.length>0, "bad path02");
-   assert.isDefined(path02.find(v => v===3), "bad path02");
+   assert.isTrue(path02[0].length>0, "bad path02");
+   assert.isDefined(path02[0].find(v => v===3), "bad path02");
 
    const path12 = graph.find( { from : 1, to : 2, by : ByFastestPath });
-   assert.isTrue(path12.length>0, "bad path12");
-   assert.isUndefined(path12.find(v => v===0), "bad path12");
+   assert.isTrue(path12[0].length>0, "bad path12");
+   assert.isUndefined(path12[0].find(v => v===0), "bad path12");
 
    const path32 = graph.find( { from : 3, to : 2, by : ByFastestPath });
-   assert.isTrue(path32.length>0, "bad path32");
+   assert.isTrue(path32[0].length>0, "bad path32");
 
    const path04 = graph.find( { from : 0, to : 4, by : ByFastestPath });
-   assert.isTrue(path04.length>0, "bad path04");
-   assert.isDefined(path04.find(v => v===3), "bad path04");
+   assert.isTrue(path04[0].length>0, "bad path04");
+   assert.isDefined(path04[0].find(v => v===3), "bad path04");
 
    const path01 = graph.find( { from : 0, to : 1, by : ByFastestPath });
-   assert.isTrue(path01.length>0, "bad path01");
-   assert.isDefined(path01.find(v => v===3), "bad path01");
+   assert.isTrue(path01[0].length>0, "bad path01");
+   assert.isDefined(path01[0].find(v => v===3), "bad path01");
 
    const path24 = graph.find( { from : 2, to : 4, by : ByFastestPath });
-   assert.isTrue(path24.length>0, "bad path24");
-   assert.isDefined(path24.find(v => v===1), "bad path24");
+   assert.isTrue(path24[0].length>0, "bad path24");
+   assert.isDefined(path24[0].find(v => v===1), "bad path24");
 
 }
 
@@ -94,8 +94,7 @@ export const viewPathFastPathBetween = () => {
          };
    const path42 : Path = PathFactory.Build( 
                            params,
-                           graph.find( params ),
-                           graph.TotalWeight );
+                           graph.find( params ));
    assert.isDefined(path42,"path is undefined");
    assert.equal(path42.fromVertexId,params.from, "bad pathFromVertexId");
    assert.equal(path42.toVertexId,params.to, "bad pathToVertexId");
@@ -104,12 +103,12 @@ export const viewPathFastPathBetween = () => {
    // to really view something
    console.log(path42);
 
-   logPath({ from : 0, to : 2, by } , graph);
-   logPath({ from : 1, to : 2, by } , graph);
-   logPath({ from : 3, to : 2, by } , graph);
-   logPath({ from : 0, to : 4, by } , graph);
-   logPath({ from : 0, to : 1, by } , graph);
-   logPath({ from : 2, to : 4, by } , graph);
+   logPath({ from : 0, to : 2, by }, graph);
+   logPath({ from : 1, to : 2, by }, graph);
+   logPath({ from : 3, to : 2, by }, graph);
+   logPath({ from : 0, to : 4, by }, graph);
+   logPath({ from : 0, to : 1, by }, graph);
+   logPath({ from : 2, to : 4, by }, graph);
  
 }
 /**
@@ -120,16 +119,25 @@ export const viewPathEcoPathBetween = () => {
    const graph = new Graph();
    const by = ByEcoPath;
 
-   logPath({ from : 4, to : 2, by } , graph);
-   logPath({ from : 0, to : 2, by } , graph);
-   logPath({ from : 1, to : 2, by } , graph);
-   logPath({ from : 3, to : 2, by } , graph);
-   logPath({ from : 0, to : 4, by } , graph);
-   logPath({ from : 0, to : 1, by } , graph);
-   logPath({ from : 2, to : 4, by } , graph);
+   logPath({ from : 4, to : 2, by }, graph);
+   logPath({ from : 0, to : 2, by }, graph);
+   logPath({ from : 1, to : 2, by }, graph);
+   logPath({ from : 3, to : 2, by }, graph);
+   logPath({ from : 0, to : 4, by }, graph);
+   logPath({ from : 0, to : 1, by }, graph);
+   logPath({ from : 2, to : 4, by }, graph);
  
 }
-
-const logPath = (params : FindPathParameters,graph : Graph) => {
-   console.log( PathFactory.Build( params, graph.find( params ), graph.TotalWeight ));
+/**
+ * log helper function
+ * @param params 
+ * @param graph 
+ */
+const logPath = (params : FindPathParameters, graph : Graph) => {
+   console.log( 
+      PathFactory.Build( 
+         params, 
+         graph.find( params )
+      ) 
+   );
 }

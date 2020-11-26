@@ -10,10 +10,18 @@ import SampleGraph from "../assets/graph3.json";
  * Type used to store 2 numbers ( vertex id , vertex weight)
  */
 type TwoNumbers = [number, number];
-
-/** string to identify the metric used to find the fastest path */
+/**
+ * Type used to store shorter path's vertices (number[]) 
+ * and its total lenght/weight (number)
+ */
+export type ShorterPath = [number[],number];
+/** 
+ * string to identify the metric used to find the fastest path 
+ * */
 export const ByFastestPath = "fast";
-/** string to identify the metric used to find the eco path */
+/** 
+ * string to identify the metric used to find the eco path 
+ * */
 export const ByEcoPath = "eco";
 /**
  * Manage path in Graph
@@ -73,23 +81,18 @@ export default class Graph {
             throw new Error(`Invalid "by" parameter`);
         }
     }
-    //------------------------------------------
-    //------------------------------------------
+    /*****************************************
+     * Private properties used to find path
+     * see https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra
+     *****************************************/
     private weights : number[] = [];
     private previous : number[] = [];
-
-    private totalWeight : number = 0;
-    /**
-     * The total weight of the path find
-     */
-    public get TotalWeight() : number { return this.totalWeight; }
     /**
      * Initialize vertex weight and previous array
      * @param startId 
      * @param length 
      */
     private initialize(startId : number, length : number) {
-        this.totalWeight = 0;
         // initialize vertex weight array
         this.weights = new Array<number>(length);
         for(let id=0; id<length; id++ ) {
@@ -182,7 +185,7 @@ export default class Graph {
     /**
     * @param param FindPath Parameters : from vertex id, to vertex id, by { "eco","fast" }
     */
-   public find( param : FindPathParameters ) : number[] {
+    public find( param : FindPathParameters ) : ShorterPath {
         // check parameters
         this.check(param);
         // dijkstra algorithm to find shorted path using the metric
@@ -198,11 +201,12 @@ export default class Graph {
             if(this.previous[vertexId]!==undefined) {
                 vertexId = this.previous[vertexId];
             }
-            else { // vertexId not reached
-               return [];
+            else { 
+               // vertexId not reached : return empty path and infinite weight
+               return [[],Number.POSITIVE_INFINITY];
             }
         }
-        this.totalWeight = this.weights[param.to];
-        return verticesPath;
+        const totalWeight = this.weights[param.to];
+        return [verticesPath, totalWeight];
     }
 }

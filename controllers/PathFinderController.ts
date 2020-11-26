@@ -49,8 +49,7 @@ export default class PathFinderController {
 
             return PathFactory.Build( 
                     params,
-                    this.graph.find( params ),
-                    this.graph.TotalWeight );
+                    this.graph.find( params ) );
         }
         catch(error) {
             request.log.error( error );
