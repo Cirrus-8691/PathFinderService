@@ -6,15 +6,15 @@ import { viewPathEcoPathBetween, viewPathFastPathBetween } from "./IntegrationsT
  * Run all unitTest with mocha framework
  * see : https://www.npmjs.com/package/mocha
  */
-describe('Unit tests', () => {
-    describe('Unit tests', () => {
-        it('Sample graph is loaded',            testGraphExists );
-        it('Graph tests to getVertex',          testGetVertex );
-        it('Check find query',                   testFindPathParameters );
-        it('Find fastest path between vertices', findFastPathBetweenVertices);
+describe("Unit tests", () => {
+    describe("Unit tests", () => {
+        it("Sample graph is loaded",            testGraphExists );
+        it("Graph tests to getVertex",          testGetVertex );
+        it("Check find query",                   testFindPathParameters );
+        it("Find fastest path between vertices", findFastPathBetweenVertices);
     });
-    describe('Integration tests', () => {
-        it('View fastest path between vertices', viewPathFastPathBetween);
-        it('View eco path between vertices',     viewPathEcoPathBetween);
+    describe("Integration tests", () => {
+        it("View fastest path between vertices", viewPathFastPathBetween);
+        it("View eco path between vertices",     viewPathEcoPathBetween);
     });
 });

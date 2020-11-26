@@ -12,10 +12,10 @@ export default class MainController {
     constructor(router: FastifyInstance) {
         this.router = router
 
-        router.get('/api',
+        router.get("/api",
             this.sayHello.bind(this));
 
-        router.get('/api/version',
+        router.get("/api/version",
             this.healthCheck.bind(this));
     }
 
@@ -29,8 +29,8 @@ export default class MainController {
         {
             request.log.info( "SW - api" );
 
-            const stream = fs.createReadStream('./assets/serviceIndex.html')
-            reply.type('text/html').send(stream);
+            const stream = fs.createReadStream("./assets/serviceIndex.html")
+            reply.type("text/html").send(stream);
         }
         catch(error) {
              request.log.error( error );

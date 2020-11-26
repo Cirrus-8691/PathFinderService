@@ -8,6 +8,6 @@ export interface FindPathParameters  extends RequestGenericInterface {
     from : number; 
     /** to vertex id */
     to : number;
-    /** by "métrique" : { 'eco', 'fast' } */
+    /** by "métrique" : { "eco", "fast" } */
     by : string;
 }
