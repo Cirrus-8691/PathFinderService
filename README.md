@@ -3,13 +3,35 @@
   <a href="./LICENSE">
       <img
         alt="license:GPL"
-        src="https://img.shields.io/badge/license-GPL-blue"
+        src="https://img.shields.io/badge/License-GPL-blue"
       />
   </a>
   <img
-      alt="license:GPL"
-      src="https://img.shields.io/badge/Language-TypeScript-green"
+      alt="Language:TypeScript"
+      src="https://img.shields.io/badge/Language-TypeScript-purple"
   />
+  <a href="https://www.fastify.io/">
+    <img
+        alt="Server:Fastify"
+        src="https://img.shields.io/badge/Server-Fastify-45d298"
+    />
+  </a>
+</p>
+<p>
+  <a href="https://mochajs.org/">
+    <img
+        alt="unitTests:mocha+chai"
+        src="https://img.shields.io/badge/Unit_Tests-Chai_Mocha-aa4720"
+    />
+  </a>
+  <a href="https://www.cypress.io/">
+    <img
+        alt="endToEndTests:Cypress"
+        src="https://img.shields.io/badge/EndToEnd_Tests-Cypress-aa4720"
+    />
+  </a>
+
+  ![Node.js CI](https://github.com/Cirrus-8691/PathFinderService/workflows/Node.js%20CI/badge.svg?branch=master)
 </p>
 Author : Frédéric Diaz<br>
 This is a micro service used to find the fastest or eco path between two vertices in a graph.
